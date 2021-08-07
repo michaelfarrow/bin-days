@@ -28,12 +28,10 @@ function parseDate(date) {
 
 function parse(res) {
   const $ = cheerio.load(res.data);
-  const $row = $('tr').eq(1);
-  const refuse = $row.find('td').eq(2).text().trim();
-  const recycling = $row.find('td').eq(3).text().trim();
-  const garden = $row
-    .find('td')
-    .eq(4)
+  const refuse = $('dd').eq(0).text().trim();
+  const recycling = $('dd').eq(1).text().trim();
+  const garden = $('dd')
+    .eq(2)
     .text()
     .trim()
     .replace(/\s*\*$/, '');
