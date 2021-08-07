@@ -121,7 +121,7 @@ function filterExisting(upcoming) {
   });
 }
 
-function creatEvents(events) {
+function createEvents(events) {
   return Promise.all(
     events.map((event) => rateLimit(() => createEvent(event)))
   );
@@ -129,4 +129,4 @@ function creatEvents(events) {
 
 authenticate();
 
-lookup().then(parse).then(filterExisting).then(creatEvents);
+lookup().then(parse).then(filterExisting).then(createEvents);
