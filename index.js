@@ -37,9 +37,10 @@ function parse(res) {
     .replace(/\s*\*$/, '');
 
   const todo = [];
+
   if (refuse) todo.push({ type: 'Refuse', date: parseDate(refuse) });
   if (recycling) todo.push({ type: 'Recycling', date: parseDate(recycling) });
-  if (garden) todo.push({ type: 'Garden', date: parseDate(garden) });
+  if (garden && garden.indexOf('N/A') === -1) todo.push({ type: 'Garden', date: parseDate(garden) });
 
   return todo;
 }
